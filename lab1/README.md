@@ -1,15 +1,17 @@
-
 # Readme for UDP Client and UDP Server
 ## Requirements:
-* This requires two host machines. One to run the server and the other to run the client
-* You must have python3 installed on your computer
+* This optionally requires two host machines. One to run the server and the other to run the client.
+* If you just want to run the client only you may, because by default it connects to my server at www.stoplagging.com:3001 if this is the case you only need one host machine.
+* You must have python3 installed on your computer.
 
-## How to run:
-1. First you must run tai_udp_server.py on the server host
-2. The host must have UDP port 3001 open in the firewall. Your router must also unblock this port.
-3. Then on the serving host start the program with "python tai_udp_server.py" in a command line terminal.
-4. After that run "python tai_udp_client.py 2 4 8" in the command line terminal of the client host.
-5. You may try other inputs besides 2 4 8 as long as they are integer inputs
+## How to run server:
+1. First you must edit line 16 of tai_udp_server.py so that server_name is your server host's IP.
+3. The host server must have UDP port 3001 open in the firewall. Your router must also unblock this port.
+4. Then on the serving host navigate to and start the program with "python tai_udp_server.py" in a command line terminal.
+
+## How to run client:
+1. Navigate to the program and type "python tai_udp_client.py 2 4 8" in the command line terminal of the client host.
+2. You may try other inputs besides 2 4 8 as long as they are integer inputs
 
 ## Test Cases
 ### Case 1: No arguments
