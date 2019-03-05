@@ -1,4 +1,10 @@
 # Readme for UDP Client and UDP Server
+## About Programs:
+* This is a client server pair that works together to do the following:
+* The client program that takes in integer command line arguments. Then it sends a formatted string of the integer arguments to the server program. 
+* The server program converts this string back to an integer set. Then makes calculations on the data that was sent to the client. It calculates the lowest value, highest value, mean, and total of the data set. After that it sends the results as a concatenated string back to the client
+* The client reads this concatenated string. Splits it. Then displays the results in a readable format.
+
 ## Requirements:
 * This optionally requires two host machines. One to run the server and the other to run the client.
 * If you just want to run the client only you may, because by default it connects to my server at www.stoplagging.com:3001 if this is the case you only need one host machine.
@@ -90,7 +96,7 @@ Result is expected Test Case 1 passed...
 
 
 ### Case 2: Floating point arguments
-> python .\tai_tcp_client.py 12 3 4.4
+> python tai_tcp_client.py 75 85 9.5
 > Invalid Input: Please use integers as arguments not floating point values.
 > 
 > Program exiting...
@@ -98,7 +104,7 @@ Result is expected Test Case 1 passed...
 Result is expected Test Case 2 passed...
 
 ### Case 3: Symbols in arguments
-> python .\tai_tcp_client.py 12 3 %!
+> python tai_tcp_client.py 293 !2 $3
 > Invalid Input: Please use integers as arguments not letters or symbols.
 > 
 > Program exiting...
@@ -107,25 +113,22 @@ Result is expected Test Case 3 passed...
 
 
 ### Case 4: Letters in arguments
-> python .\tai_tcp_client.py 48 12 a b
+> python tai_tcp_client.py apple 123 182 01 banana
 > Invalid Input: Please use integers as arguments not letters or symbols.
 > 
 > Program exiting...
 
 Result is expected Test Case 4 passed...
 
-
 ### Case 5: Valid arguments
-> python .\tai_tcp_client.py 2 4 8
-> 
-> Data sent to server: ['.\\tai_tcp_client.py', '2', '4', '8']
+> Data sent to server: ['tai_tcp_client.py', '100', '50', '33']
 > Data was received from server...
 > 
-> Formatted data below <br>
-> Total: 14 <br>
-> Lowest: 2 <br>
-> Highest: 8 <br>
-> Mean: 4.666666666666667 <br>
+> Formatted data below<br>
+> Total: 183<br>
+> Lowest: 33<br><br>
+> Highest: 100<br>
+> Mean: 61.0<br>
 
 Result is expected Test Case 5 passed...
 
