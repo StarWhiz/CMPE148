@@ -53,6 +53,8 @@ def check_input(set_input):
     """
 
     if len(set_input) == 1:  # If input is only 1 element long
+        print("No arguments specified. Please enter some integers as command line arguments.\n")
+        print("Program exiting...\n")
         return 0
     else:
         # Skipping first element in set
