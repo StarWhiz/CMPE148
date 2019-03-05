@@ -3,17 +3,20 @@ import re
 
 
 def udp_server():
-    server_port = 3001
-    server_socket = socket(AF_INET, SOCK_DGRAM)
+    server_port = 3002
+    server_socket = socket(AF_INET, SOCK_STREAM)
     server_socket.bind(('', server_port))
+    server_socket.listen(1)
     print("The server is ready to receive data...")
+
     while True:
-        data, client_address = server_socket.recvfrom(2048)
+        connection_socket, addr = server_socket.accept()
+        data = connection_socket.recv(1024).decode()
 
-        print("received data from: ", end=" ")
-        print(client_address)
+        print("Received data from: ", end=" ")
+        print(addr)
 
-        formatted_data = re.findall(r'[0-9]+', data.decode())  # Using RegEx converts string to string list
+        formatted_data = re.findall(r'[0-9]+', data)  # Using RegEx converts string to string list
         list_of_ints = []
 
         # This for loop creates a copy that converted the list of strings to a list of integers
@@ -34,7 +37,9 @@ def udp_server():
         cat_result = str(result_total) + "," + str(result_min) + "," + str(result_max) + "," + str(result_mean)
 
         # Send encoded cat_result to client
-        server_socket.sendto(cat_result.encode(), client_address)
+        connection_socket.send(cat_result.encode())
+
+        connection_socket.close()
 
 
 def get_mean_from_list(int_list):

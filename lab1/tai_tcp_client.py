@@ -16,17 +16,17 @@ def udp_client():
     server_name = 'www.stoplagging.com'
     server_port = 3002
     client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect(server_name, server_port)
 
     set_of_integers = str(sys.argv)  # This set is the result of the command line arguments
 
     if check_input(sys.argv) == 0:
         pass
     else:
+        client_socket.connect((server_name, server_port))
         print("\nData sent to server: " + set_of_integers)
 
         client_socket.send(set_of_integers.encode())
-        received_data, server_address = client_socket.recvfrom(2048)
+        received_data = client_socket.recv(1024)
         print("Data was received from server...\n")
         decoded_data = received_data.decode()
 
@@ -43,7 +43,7 @@ def udp_client():
         print("Highest:", result_max)
         print("Mean:", result_mean + "\n")
 
-        client_socket.close()
+    client_socket.close()
 
 
 def check_input(set_input):
