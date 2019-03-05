@@ -1,3 +1,9 @@
+"""
+    This is a TCP server program that receives data from tai_tcp_client.py calculates it and sends it back the client.
+
+    Written By: Tai Dao
+    Date: 3/3/2019
+"""
 from socket import *
 import re
 
